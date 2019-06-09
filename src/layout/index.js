@@ -39,7 +39,9 @@ export default (props) => {
                         transform: `scale(${styles[0].style.scale}, ${styles[0].style.scale})`
                     }}
                 >
-
+                    <Icon type="stop" className="stop-btn" />
+                    <Icon type="minus-circle" className="minus-btn" />
+                    <Icon type="setting" className="setting-btn" />
                 </div>) : null}
             </TransitionMotion>
             <Content>
