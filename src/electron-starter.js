@@ -8,7 +8,20 @@ const url = require('url')
 let mainWindow
 
 function createWindow() {
-  mainWindow = new BrowserWindow({ width: 1050, height: 700, titleBarStyle: 'hidden' })
+  // 配置窗口
+  const options = {
+    width: 1050,
+    height: 700,
+    titleBarStyle: 'hidden',
+  }
+
+  // window操作系统适配，窗口设置
+  if (process.platform === 'win32') {
+    options.width = 850
+    options.height = 520
+    options.frame = false
+  }
+  mainWindow = new BrowserWindow(options)
 
   mainWindow.loadURL(
     process.env.ELECTRON_START_URL ||
@@ -18,6 +31,9 @@ function createWindow() {
         slashes: true
       })
   )
+
+  // 开启调试工具
+  mainWindow.webContents.openDevTools()
 
   mainWindow.on('closed', () => {
     mainWindow = null

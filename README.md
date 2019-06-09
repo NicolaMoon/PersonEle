@@ -154,6 +154,4 @@ module.exports = override(
 );
 
 ## 第三步 启动
-npm run electron 只启动桌面程序
-
 npm start 启动web端以及桌面程序
