@@ -17,7 +17,7 @@ function createWindow() {
 
   // window操作系统适配，窗口设置
   if (process.platform === 'win32') {
-    options.width = 850
+    options.width = 800
     options.height = 520
     options.frame = false
   }

@@ -5,14 +5,90 @@
     background-size: cover;
     background-position: center center;
     overflow: hidden;
+    .box {
+        position: absolute;
+        z-index: 1;
+        width: 48%;
+        height: 100vh;
+        right: 0;
+        padding: 12px;
+        background-color: #fff;
+        // border-radius: 20px 0 0 20px;
+        // box-shadow: 0 0 16px #707070;
+    }
+    .sign-btn {
+        position: absolute;
+        z-index: 2;
+        width: 56px;
+        height: 32px;
+        text-align: center;
+        color: #fff;
+        transition: all .3s;
+        .icon {
+            font-size: 18px;
+            line-height: 32px;
+        }
+    }
+    .in {
+        right: 68px;
+        border-radius: 16px 0 0 16px;
+        background-color: #ff4d4d;
+    }
+    .up {
+        right: 12px;
+        border-radius: 0 16px 16px 0;
+        background-color: #ff4d4d;
+    }
+    .active-btn {
+        background-color: #fff;
+        color: #ff4d4d;
+        border: 1px solid #e8e8e8;
+        cursor: pointer;
+    }
+    .sign-panel {
+        margin-top: 36px;
+        padding: 12px;
+        min-height: 80vh;
+    }
+    .texts {
+        margin-bottom: 24px;
+    }
+    .sign-text {
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .or {
+        margin: 0 12px;
+    }
+    .active-text {
+        font-size: 24px;
+        color: #ff4d4d;
+        cursor: auto;
+    }
+    .ant-tabs-tab-active {
+        border-color: #ff4d4d;
+        color: #ff4d4d;
+        &:hover {
+            color: #ff4d4d;
+        }
+        &:active {
+            color: #fff;
+        }
+    }
+    .ant-tabs-tab {
+        &:hover {
+            color: #ff4d4d;
+        }
+    }
+    .ant-tabs-ink-bar {
+        background-color: #ff4d4d;
+    }
 }
 
-.box {
-    position: absolute;
-    width: 53%;
-    height: 100vh;
-    right: -20px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 0 16px #707070;
+.form-wrapper {
+    padding: 12px 16px;
+    .submit-btn {
+        background-color: #ff4d4d;
+        border-color: #ff4d4d;
+    }
 }

@@ -11,11 +11,11 @@ const { Content } = Layout;
 
 export default (props) => {
     const [showMenu, setShowMenu] = useState(false);
-    const willEnter = (styleThatEnter) => {
+    const willEnter = () => {
         return { scale: 0 }
     }
     
-    const willLeave = (styleThatLeft) => {
+    const willLeave = () => {
         return { scale: spring(0) }
     }
     return (
