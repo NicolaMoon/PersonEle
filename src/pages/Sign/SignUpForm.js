@@ -1,10 +1,19 @@
 import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
+import InputCode from '../../widgets/InputCode';
 
 const { Item: FormItem } = Form;
 
 const SignUpForm = (props) => {
-    const { getFieldDecorator } = props.form;
+    const { form } = props;
+    const { getFieldDecorator } = form;
+    const handleSignUp = () => {
+        form.validateFields((errors) => {
+            if (!errors) {
+                console.log(form.getFieldsValue());
+            }
+        });
+    }
     return (<Form className="form-wrapper">
         <FormItem>
             {getFieldDecorator('account', {
@@ -12,6 +21,7 @@ const SignUpForm = (props) => {
             })(<Input
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Account"
+                allowClear
             />)}
         </FormItem>
         <FormItem>
@@ -20,6 +30,7 @@ const SignUpForm = (props) => {
             })(<Input.Password
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Password"
+                allowClear
             />)}
         </FormItem>
         <FormItem>
@@ -28,6 +39,7 @@ const SignUpForm = (props) => {
             })(<Input.Password
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Password Again"
+                allowClear
             />)}
         </FormItem>
         <FormItem>
@@ -36,19 +48,21 @@ const SignUpForm = (props) => {
             })(<Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Email"
+                allowClear
             />)}
         </FormItem>
         <FormItem>
             {getFieldDecorator('code', {
                 rules: [{ required: true, message: 'Please input your code!' }],
-            })(<Input
-                prefix={<Icon type="safety-certificate" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Code"
-                addonAfter={<Icon type="barcode" />}
-            />)}
+            })(<InputCode />)}
         </FormItem>
         <FormItem>
-            <Button block className="submit-btn" type="primary">Sign Up</Button>
+            <Button
+                block
+                className="submit-btn"
+                type="primary"
+                onClick={() => handleSignUp()}
+            >Sign Up</Button>
         </FormItem>
     </Form>);
 }

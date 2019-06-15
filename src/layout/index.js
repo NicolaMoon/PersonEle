@@ -10,7 +10,7 @@ const { Content } = Layout;
 // const thisWindow = BrowserWindow.getFocusedWindow()
 
 export default (props) => {
-    const [showMenu, setShowMenu] = useState(false);
+    const [showMenu, setShowMenu] = useState(true);
     const willEnter = () => {
         return { scale: 0 }
     }
@@ -41,7 +41,6 @@ export default (props) => {
                 >
                     <Icon type="stop" className="stop-btn" />
                     <Icon type="minus-circle" className="minus-btn" />
-                    <Icon type="setting" className="setting-btn" />
                 </div>) : null}
             </TransitionMotion>
             <Content>

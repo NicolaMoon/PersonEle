@@ -1,11 +1,20 @@
 import React from 'react';
 import { Form, Input, Icon, Button } from 'antd';
+import InputCode from '../../widgets/InputCode';
 
 const { Item: FormItem } = Form;
 
 const SignInForm = (props) => {
-    const { getFieldDecorator } = props.form;
+    const { form } = props;
+    const { getFieldDecorator } = form;
     const { type } = props;
+    const handleSignIn = () => {
+        form.validateFields((errors) => {
+            if (!errors) {
+                console.log(form.getFieldsValue());
+            }
+        });
+    }
     return (<Form className="form-wrapper">
         {type === 'signIn' && <FormItem>
             {getFieldDecorator('account', {
@@ -13,6 +22,7 @@ const SignInForm = (props) => {
             })(<Input
                 prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Account"
+                allowClear
             />)}
         </FormItem>}
         {type === 'signIn' && <FormItem>
@@ -21,6 +31,7 @@ const SignInForm = (props) => {
             })(<Input.Password
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Password"
+                allowClear
             />)}
         </FormItem>}
         {type === 'signUp' && <FormItem>
@@ -29,22 +40,27 @@ const SignInForm = (props) => {
             })(<Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Email"
+                allowClear
             />)}
         </FormItem>}
         {type === 'signUp' && <FormItem>
             {getFieldDecorator('code', {
                 rules: [{ required: true, message: 'Please input your code!' }],
-            })(<Input
-                prefix={<Icon type="safety-certificate" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Code"
-                addonAfter={<Icon type="barcode" />}
-            />)}
+            })(<InputCode />)}
         </FormItem>}
         <FormItem>
-            <Button block className="submit-btn" type="primary">Sign In</Button>
+            <Button
+                block
+                className="submit-btn"
+                type="primary"
+                onClick={() => handleSignIn()}
+            >Sign In</Button>
         </FormItem>
         <FormItem>
-            <Button block>Reset</Button>
+            <Button
+                block
+                onClick={() => form.resetFields()}
+            >Reset</Button>
         </FormItem>
     </Form>);
 }
