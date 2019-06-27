@@ -1,0 +1,45 @@
+import React from 'react';
+import { Layout, Menu, Icon } from 'antd';
+import { FaceImg } from '../assets';
+import './index.less';
+
+const { Content, Sider } = Layout;
+const { Item: MenuItem } = Menu;
+
+export default (props) => {
+    return (<Layout className="layout-wrapper">
+        <Sider
+            collapsible
+            collapsed
+            trigger={null}
+        >
+            <div className="face">
+                <img src={FaceImg} alt="face" className="face-img" />
+            </div>
+            <Menu
+                theme="dark"
+                mode="inline"
+                inlineCollapsed
+                defaultSelectedKeys={['0']}
+                className="menu"
+            >
+                <MenuItem key="0">
+                    <Icon type="book" />
+                    <span>notes | 笔记</span>
+                </MenuItem>
+                <MenuItem key="1">
+                    <Icon type="profile" />
+                    <span>tasks | 任务</span>
+                </MenuItem>
+            </Menu>
+        </Sider>
+        <Layout>
+            <div className="header">
+                <Icon type="close" className="close-button" />
+                <Icon type="fullscreen" className="titlebar-button" />
+                <Icon type="minus" className="titlebar-button" />
+            </div>
+            <Content>{props.children}</Content>
+        </Layout>
+    </Layout>);
+}

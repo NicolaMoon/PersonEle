@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import { Button } from 'antd';
-import './App.less';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './router.js';
+import MyLayout from './layout';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Button type="primary">确定</Button>
-        <p className="test">测试</p>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default () => {
+  return (
+    <BrowserRouter>
+        <MyLayout>
+          <Router />
+        </MyLayout>
+      </BrowserRouter>
+  );
+};
