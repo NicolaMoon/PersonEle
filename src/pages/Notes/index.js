@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Tree, PageHeader, Button, Icon, Tabs } from 'antd';
+import { Layout, Tree, Icon, Tabs } from 'antd';
 import './index.less';
 
 const { Sider, Content } = Layout;
@@ -57,21 +57,19 @@ export default (props) => {
     }
 
     return (<Layout className="notes-wrapper">
-        <Sider theme="light">
-            <PageHeader
-                title={
-                    <div>
-                        <Button size="small" className="small-margin-lr"><Icon type="file-add" /></Button>
-                        <Button size="small" className="small-margin-lr"><Icon type="folder-add" /></Button>
-                    </div>
-                }
-                backIcon={false}
-                extra={[
-                    <Button size="small" type="danger" key="0"><Icon type="delete" /></Button>
-                ]}
-                className="notes-header"
-            />
-            <DirectoryTree multiple defaultExpandAll>
+        <Sider
+            theme="light"
+            style={{
+                backgroundColor: '#2a2a2b'
+            }}
+        >
+            <div className="notes-header">
+                <a className="link-button"><Icon type="delete" /></a>
+                <a className="link-button"><Icon type="reload" /></a>
+                <a className="link-button"><Icon type="folder-add" /></a>
+                <a className="link-button"><Icon type="file-add" /></a>
+            </div>
+            <DirectoryTree multiple defaultExpandAll className="dir-tree">
                 <TreeNode title="parent 0" key="0-0">
                     <TreeNode title="leaf 0-0" key="0-0-0" isLeaf />
                     <TreeNode title="leaf 0-1" key="0-0-1" isLeaf />
@@ -82,7 +80,7 @@ export default (props) => {
                 </TreeNode>
             </DirectoryTree>
         </Sider>
-        <Content>
+        <Content className="content-box">
             <Tabs
                 onChange={handleChange}
                 activeKey={activeKey}

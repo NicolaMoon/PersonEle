@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import { FaceImg } from '../assets';
 import './index.less';
 
 const { Content, Sider } = Layout;
@@ -11,11 +10,13 @@ export default (props) => {
         <Sider
             collapsible
             collapsed
+            collapsedWidth="75"
             trigger={null}
+            style={{
+                backgroundColor: '#3a3a3a',
+                overflow: 'hidden'
+            }}
         >
-            <div className="face">
-                <img src={FaceImg} alt="face" className="face-img" />
-            </div>
             <Menu
                 theme="dark"
                 mode="inline"

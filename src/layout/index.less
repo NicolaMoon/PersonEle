@@ -1,20 +1,23 @@
 .layout-wrapper{
     min-height: 100vh;
-    .face {
-        margin-top: 8px;
-        text-align: center;
-    }
-    .face-img {
-        height: 55px;
-        width: 55px;
-        border-radius: 50%;
-    }
     .menu {
         margin-top: 24px;
+        background-color: #3a3a3a;
+        .ant-menu-item-selected {
+            background-color: #3a3a3a;
+        }
+        .ant-menu-item {
+            padding: 0!important;
+            width: 75px;
+            text-align: center;
+            .anticon {
+                font-size: 24px;
+            }
+        }
     }
     .header {
         height: 32px;
-        background-color: #001529;
+        background-color: #333333;
         -webkit-app-region: drag;
     }
     .close-button {

@@ -2,9 +2,75 @@
     height: 100vh;
     overflow: hidden;
     .notes-header {
-        border-bottom: 1px solid #e8e8e8;
+        height: 40px;
+        background-color: #444;
+    }
+    .dir-tree {
+        color: #fff;
+        .ant-tree-title {
+            color: #b6b6b6;
+        }
+        .ant-tree-iconEle {
+            color: #b6b6b6;
+        }
+        .ant-tree-treenode-selected > span.ant-tree-node-content-wrapper::before {
+            background-color: #444!important;
+        }
+        .ant-tree-child-tree li.ant-tree-treenode-selected {
+            span.ant-tree-node-content-wrapper::before {
+                background-color: #444!important;
+            }
+        }
+        li span.ant-tree-node-content-wrapper:hover::before {
+            background-color: #333!important;
+        }
     }
     .ant-tabs-bar {
+        padding-right: 12px;
+    }
+    .link-button {
         padding: 0 12px;
+        font-size: 18px;
+        line-height: 40px;
+        float: right;
+        color: gray;
+        transition: all .3s;
+        &:hover {
+            color: #ffffff;
+            background-color: gray;
+        }
+    }
+    .content-box {
+        background-color: #212121;
+        .ant-tabs-bar {
+            border-color: #666666;
+        }
+        .ant-tabs-tab {
+            background-color: #333333!important;
+            border-color: #666!important;
+            color: #b6b6b6;
+        }
+        .ant-tabs-tab-active {
+            background-color: #212121!important;
+            color: #fff!important;
+            border-bottom: 1px solid #212121!important;
+        }
+        .ant-tabs-close-x {
+            color: #b6b6b6!important;
+        }
+        .ant-tabs-new-tab {
+            color: #666;
+            border-color: #666;
+            &:hover {
+                color: #b6b6b6;
+                border-color: #b6b6b6;
+            }
+        }
+        .ant-tabs-tab-prev-icon-target {
+            color: #b6b6b6;
+        }
+        .ant-tabs-tab-next-icon-target {
+            color: #b6b6b6;
+        }
     }
 }
