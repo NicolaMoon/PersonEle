@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-app-region: no-drag;
+}
+
+.small-margin-lr {
+  margin: 0 4px;
+}

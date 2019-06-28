@@ -19,7 +19,6 @@ export default (props) => {
             <Menu
                 theme="dark"
                 mode="inline"
-                inlineCollapsed
                 defaultSelectedKeys={['0']}
                 className="menu"
             >
