@@ -8,16 +8,16 @@ const { TabPane } = Tabs;
 
 export default (props) => {
     const [panes, setPanes] = useState([]);
-    const [activeKey, setActiveKey] = useState('0');
+    const [activeKey, setActiveKey] = useState('1');
 
     function add() {
-        let max = -1;
+        let max = 0;
         panes.forEach(({ key: val }) => {
             val = parseInt(val);
             max = max > val ? max : val;
         });
         const newPane = {
-            title: 'undefined',
+            title: `undefined${max + 1}`,
             content: '',
             key: `${max + 1}`,
         };
