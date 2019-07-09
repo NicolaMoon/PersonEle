@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Tree, Icon, Tabs } from 'antd';
+import { Logo } from '../../assets';
 import './index.less';
 
 const { Sider, Content } = Layout;
@@ -147,6 +148,9 @@ export default (props) => {
           </TabPane>
         ))}
       </Tabs>
+      {!panes.length && <div className="welcome">
+        <img src={Logo} />
+      </div>}
     </Content>
   </Layout>);
 };
