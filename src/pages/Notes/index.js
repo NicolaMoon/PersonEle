@@ -158,12 +158,33 @@ export default (props) => {
             if (item.children && item.children.includes(id)) {
               item.children.push(newFile.id);
             }
-          })
+          });
         } else {
           children = children ? children.push(newFile.id) : [newFile.id];
         }
       }
     });
+    setFileList(newFileList);
+  }
+
+  function handleDeleteFile() {
+    const newFileList = _.cloneDeep(fileList);
+    function deleteFile(deleteId) {
+        newFileList.forEach(({ id, isLeaf, children = [] }, index) => {
+          if (id === deleteId) {
+            if (!isLeaf) {
+              children.map(val => deleteFile(val));
+            }
+            newFileList.splice(index, 1);
+            newFileList.forEach((item) => {
+              if (item.children && item.children.includes(deleteId)) {
+                item.children = item.children.filter(val => val !== deleteId);
+              }
+            });
+          }
+        });
+    }
+    deleteFile(parseInt(selectNodeKey));
     console.log(newFileList);
     setFileList(newFileList);
   }
@@ -176,7 +197,7 @@ export default (props) => {
       }}
     >
       <div className="notes-header">
-        <a className="link-button"><Icon type="delete" /></a>
+        <a className="link-button" onClick={() => handleDeleteFile()}><Icon type="delete" /></a>
         <a className="link-button"><Icon type="reload" /></a>
         <a className="link-button" onClick={() => handleAddFile(true)}><Icon type="folder-add" /></a>
         <a className="link-button" onClick={() => handleAddFile(false)}><Icon type="file-add" /></a>
