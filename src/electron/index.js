@@ -1,16 +1,16 @@
 const electron = require("electron");
+const path = require("path");
+const isDev = require("electron-is-dev");
+require("update-electron-app")({
+  repo: "NicolaMoon/PersonEle",
+  updateInterval: "1 hour"
+});
+const eventInitial = require('./event.js');
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
-const path = require("path");
-const isDev = require("electron-is-dev");
-
 let mainWindow;
-
-require("update-electron-app")({
-  repo: "kitze/react-electron-example",
-  updateInterval: "1 hour"
-});
 
 function createWindow() {
   // 配置窗口
@@ -53,3 +53,5 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+eventInitial();

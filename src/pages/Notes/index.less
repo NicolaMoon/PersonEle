@@ -72,10 +72,49 @@
         .ant-tabs-tab-next-icon-target {
             color: #b6b6b6;
         }
+        .tab-title {
+          display: inline-flex;
+          max-width: 75px;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
 
         .welcome {
           padding: 16px 12px;
           text-align: center;
+        }
+
+        .note-box-wrapper {
+          .title-input {
+            .ant-input {
+              padding: 8px 24px 16px 24px;
+              height: 48px;
+              background-color: #212121;
+              border: none;
+              border-bottom: 1px solid #707070;
+              font-size: 32px;
+              letter-spacing: 2px;
+              color: white;
+  
+              &:focus {
+                outline: none;
+                box-shadow: none;
+              }
+            }
+          }
+          .content-input {
+            min-height: 30vh;
+          }
+          .operation {
+            position: fixed;
+            padding-right: 275px;
+            z-index: 1;
+            bottom: 0;
+            height: 32px;
+            width: 100%;
+            background-color: #333;
+          }
         }
     }
 }

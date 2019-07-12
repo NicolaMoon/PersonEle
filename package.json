@@ -13,6 +13,8 @@
     "electron-log": "^2.2.6",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "lodash": "^4.17.13",
+    "nedb": "^1.8.0",
     "react": "^16.8.6",
     "react-app-rewired": "2.1.3",
     "react-dom": "^16.8.6",
@@ -32,7 +34,7 @@
       "provider": "github"
     }
   },
-  "main": "public/electron.js",
+  "main": "src/electron/index.js",
   "homepage": "./",
   "scripts": {
     "react-start": "react-app-rewired start",
