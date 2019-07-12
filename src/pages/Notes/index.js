@@ -15,6 +15,7 @@ export default (props) => {
   const [panes, setPanes] = useState([]);
   const [activeKey, setActiveKey] = useState('1');
   const [fileList, setFileList] = useState([]);
+  const [selectNodeKey, setSelectNodeKey] = useState('0');
 
   useEffect(() => {
     ipcRenderer.send('get-notes-list');
@@ -24,6 +25,7 @@ export default (props) => {
     setFileList([
       {
         id: 0,
+        isLeaf: false,
         children: [1, 2],
       },
       {
@@ -134,6 +136,38 @@ export default (props) => {
     setFileList(newFileList);
   }
 
+  function handleAddFile(isDir) {
+    const newFileList = _.cloneDeep(fileList);
+    let maxId = 0;
+    fileList.forEach(({ id: val }) => {
+      val = val;
+      maxId = maxId > val ? maxId : val;
+    });
+    const newFile = {
+      id: maxId + 1,
+      title: 'undefined',
+      isLeaf: !isDir,
+      content: undefined,
+      children: isDir ? [] : undefined,
+    };
+    newFileList.push(newFile);
+    newFileList.forEach(({ id, children, isLeaf }) => {
+      if (id + '' === selectNodeKey) {
+        if (isLeaf) {
+          newFileList.forEach((item) => {
+            if (item.children && item.children.includes(id)) {
+              item.children.push(newFile.id);
+            }
+          })
+        } else {
+          children = children ? children.push(newFile.id) : [newFile.id];
+        }
+      }
+    });
+    console.log(newFileList);
+    setFileList(newFileList);
+  }
+
   return (<Layout className="notes-wrapper">
     <Sider
       theme="light"
@@ -144,8 +178,8 @@ export default (props) => {
       <div className="notes-header">
         <a className="link-button"><Icon type="delete" /></a>
         <a className="link-button"><Icon type="reload" /></a>
-        <a className="link-button"><Icon type="folder-add" /></a>
-        <a className="link-button"><Icon type="file-add" /></a>
+        <a className="link-button" onClick={() => handleAddFile(true)}><Icon type="folder-add" /></a>
+        <a className="link-button" onClick={() => handleAddFile(false)}><Icon type="file-add" /></a>
       </div>
       <DirectoryTree
         draggable
@@ -154,6 +188,7 @@ export default (props) => {
         defaultExpandAll
         className="dir-tree"
         onDrop={info => handleDrop(info)}
+        onSelect={keys => setSelectNodeKey(keys[0])}
       >
         {fileList[0] && renderTreeNode(fileList.filter(({ id }) => id === 0)[0].children)}
       </DirectoryTree>
